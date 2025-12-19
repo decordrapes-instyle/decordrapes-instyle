@@ -119,13 +119,6 @@ Includes:
 Optimized for link sharing on WhatsApp, Instagram, Facebook, and X.
 
 ---
-
-## 📸 Screenshots
-
-> Add screenshots or GIFs here for better GitHub presentation.
-
----
-
 ## 📄 License
 
 This project is **personal‑use friendly**.
