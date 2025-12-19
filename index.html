@@ -405,7 +405,7 @@
                         <p class="text-white/60 text-sm mb-8">Drapes & curtain, designed your way</p>
 
                         <div class="flex gap-3 justify-center">
-                            <button onclick="saveContact()"
+                            <button onclick="event.stopPropagation(); saveContact()"
                                 class="text-xs px-4 py-2 glass rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-all">
                                 Save Contact
                             </button>
@@ -860,7 +860,20 @@
     </div>
 
     <script>
-        // Theme Toggle
+        function hapticFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+            
+            if (window.TapticEngine) {
+                window.TapticEngine.impact({ style: 'light' });
+            }
+            
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.TapticEngine) {
+                window.webkit.messageHandlers.TapticEngine.postMessage('impact');
+            }
+        }
+
         function toggleTheme() {
             const html = document.documentElement;
             if (html.classList.contains('dark')) {
@@ -902,8 +915,8 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Flip Card Functions
         function flipCard() {
+            hapticFeedback();
             const card = document.getElementById('businessCardContainer');
             card.classList.toggle('flipped');
         }
